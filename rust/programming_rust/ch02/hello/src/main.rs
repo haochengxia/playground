@@ -1,6 +1,6 @@
-fn main() {
-    println!("Hello, world!");
-}
+// fn main() {
+//     println!("Hello, world!");
+// }
 
 fn gcd(mut n:u64, mut m:u64) -> u64 {
     assert!(n!=0 && m!=0);
@@ -25,14 +25,17 @@ fn test_gcd() {
     assert_eq!(gcd(2*3*5*11*17, 3*7*11*13*19), 3*11);
 }
 
+// bring the standard library *trait* FromStr into scope
 use std::str::FromStr;
+// std::env module, provide several useful functions ...
 use std::env;
 
 fn main() {
     let mut numbers = Vec::new();
     for arg in env::args().skip(1) {
+        // skip will generate a new iterator
         numbers.push(u64::from_str(&arg)
-                     .expect("error parsing argument"));
+                     .expect("error parsing argument")); // Ok(v) or Err(e)
     }
 
     if numbers.len() == 0 {
